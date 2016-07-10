@@ -5,6 +5,8 @@ lib
 dist
 public
 coverage
+**/mobile/platforms
+**/mobile/plugins
 
 .DS_Store
 .nyc_output

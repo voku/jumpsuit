@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "watch": "jumpsuit watch",
+    "ios": "jumpboot build",
     "build": "jumpsuit build"
   },
   "devDependencies": {

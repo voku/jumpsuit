@@ -26,6 +26,9 @@ export default async function () {
       case 'serve':
         await require('./serve').default(argv)
         break
+      case 'mobile':
+        await require('./mobile').default(argv)
+        break
       case 'help':
       case undefined:
         await require('./help').default(argv)
