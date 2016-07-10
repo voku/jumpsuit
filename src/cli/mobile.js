@@ -1,42 +1,20 @@
 import { log } from './emit'
-import cordova from './utils/cordova'
+import taco from './utils/taco'
 import { CONFIG } from './config'
 
 export default async function mobile (argv) {
-  if (!await checkCordovaProject()) {
-    await createCordovaProject()
-  }
-  // TODO: check cordova www is sym linked to output directory
-  log("Great! Now install an operating system by running: 'jumpova platform add ios/android'")
+  await createTacoProject()
+  log("Taco is ready to go! Use 'jumptaco [command]' to manage your taco app as you normally would \n")
 }
 
-async function checkCordovaProject () {
-  return new Promise((resolve, reject) => {
-    try {
-      cordova.info()
-    } catch (e) {
-      if (e) return resolve(false)
-      resolve(true)
-    }
-  })
-}
-
-async function createCordovaProject () {
-  return new Promise((resolve, reject) => {
-    cordova.create('mobile', {
-      lib: {
-        www: {
-          url: CONFIG.outputDir,
-          link: CONFIG.outputDir
-        }
-      }
-    }, (err) => {
-      if (err) {
-        log('Mobile environment found')
-      } else {
-        log('Creating mobile environment')
-      }
-      resolve()
+async function createTacoProject () {
+  return taco(`create mobile --link-to ${CONFIG.outputDir}`)
+    .then((res) => {
+      log('Taco project created')
     })
-  })
+    .catch((err) => {
+      if (err.code === 5536) {
+        log('Taco project found')
+      }
+    })
 }

@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+try {
+  process.chdir('mobile')
+  require('taco-cli').run(process.argv)
+} catch (e) {
+  console.log('Taco app not found! Run `jumpsuit mobile` to begin!')
+}

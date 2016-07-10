@@ -1,8 +1,0 @@
-#!/usr/bin/env node
-
-try {
-  process.chdir('mobile')
-  require('cordova').cli(process.args)
-} catch (e) {
-  console.log('Mobile environment not found! Run `jumpsuit mobile` to begin!')
-}
