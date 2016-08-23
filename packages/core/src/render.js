@@ -15,7 +15,9 @@ export default function (stores, baseComponent, options) {
 
   let history
   if (global.IS_SERVERSIDE) {
-    history = createMemoryHistory()
+    console.log(global.SERVERSIDE_PATH)
+    history = createMemoryHistory(global.SERVERSIDE_PATH)
+    // history = createMemoryHistory()
   } else {
     history = browserHistory
   }
